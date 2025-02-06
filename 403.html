@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>403 Forbidden</title>
+    <!-- Tambahkan Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+      /* =================================== */
+      body {
+        text-align: center;
+        font-family: 'Poppins', sans-serif;
+        margin: 20px;
+        background-color: #ffffff;
+        padding: 0 15px;
+      }
+      h1 {
+        color: #dc3545;
+        font-weight: 600;
+        font-size: 2.5rem;
+        margin: 15px 0;
+      }
+      p {
+        font-size: 1.1rem;
+        color: #6c757d;
+        line-height: 1.6;
+        margin: 15px 0;
+      }
+      .error-image {
+        max-width: 100%;
+        height: auto;
+        width: 450px;
+      }
+
+      .btn {
+        padding: 12px 24px;
+        border-radius: 5px;
+        font-family: 'Poppins', sans-serif;
+        font-size: 1rem;
+        cursor: pointer;
+        margin: 8px;
+        transition: all 0.3s ease;
+        width: auto;
+        min-width: 140px;
+      }
+
+      .btn-outline {
+        background-color: white;
+        border: none;
+        color: #333;
+      }
+
+      .btn-outline:hover {
+        background-color: #f8f9fa;
+      }
+
+      .btn-colored {
+        border: none;
+        color: white;
+        background-color: #007cc3; /* default blue */
+      }
+
+      .btn-colored:hover {
+        opacity: 0.9;
+      }
+
+      /* Media Queries */
+      @media screen and (max-width: 768px) {
+        body {
+          margin: 10px;
+        }
+        h1 {
+          font-size: 2rem;
+        }
+        p {
+          font-size: 1rem;
+        }
+        .error-image {
+          width: 100%;
+          max-width: 350px;
+        }
+      }
+
+      @media screen and (max-width: 480px) {
+        h1 {
+          font-size: 1.8rem;
+        }
+        .btn {
+          display: block;
+          width: 100%;
+          margin: 10px auto;
+          padding: 12px 15px;
+        }
+        p br {
+          display: none;
+        }
+      }
+
+      /* Landscape orientation fix */
+      @media screen and (max-height: 480px) and (orientation: landscape) {
+        .error-image {
+          max-width: 250px;
+        }
+        h1 {
+          font-size: 1.5rem;
+          margin: 10px 0;
+        }
+        p {
+          margin: 10px 0;
+        }
+        .btn {
+          padding: 8px 16px;
+          margin: 5px;
+          display: inline-block;
+          width: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <img id="randomImage" class="error-image" alt="Error 403 Image">
+    <h1><b id="title">Permission Denied</b></h1>
+    <p>You do not have permission to access this page, <br>please refer to your system administrator.</p>
+    <button class="btn btn-outline" onclick="javascript:window.history.back();">Back</button>
+    <button id="homeButton" class="btn btn-colored" onclick="window.location.href='/'">Go to Homepage</button>
+
+    <script>
+      window.onload = function() {
+        const images = [
+          '/error/images/403 Error Forbidden.biru.gif',
+          '/error/images/403 Error Forbidden.hijau.gif',
+          '/error/images/403 Error Forbidden.merah.gif',
+          '/error/images/403 Error Forbidden-biru.svg',
+          '/error/images/403 Error Forbidden-hijau.svg',
+          '/error/images/403 Error Forbidden-merah.svg'
+        ];
+        
+        const randomIndex = Math.floor(Math.random() * images.length);
+        const selectedImage = images[randomIndex];
+        document.getElementById('randomImage').src = selectedImage;
+
+        // Set button color based on image
+        const homeButton = document.getElementById('homeButton');
+        const backButton = document.getElementsByClassName('btn-outline');
+        const title = document.getElementById('title');
+        let color = '#007cc3';
+        if (selectedImage.includes('biru')) {
+          homeButton.style.backgroundColor = color;
+          homeButton.style.border = '2px solid ' + color;
+          title.style.color = color;
+        } else if (selectedImage.includes('merah')) {
+          color = '#de403a';
+          homeButton.style.backgroundColor = color;
+          homeButton.style.border = '2px solid ' + color;
+          title.style.color = color;
+        } else if (selectedImage.includes('hijau')) {
+          color = '#92b81a';
+          homeButton.style.backgroundColor = color;
+          homeButton.style.border = '2px solid ' + color;
+          title.style.color = color;
+        }
+
+        backButton[0].style.border = '2px solid #333';
+      }
+    </script>
+  </body>
+</html>
